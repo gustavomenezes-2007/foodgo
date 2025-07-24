@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Go</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+      color: #fff;
+      line-height: 1.6;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+    .header .logo {
+      font-size: 2em;
+      font-weight: bold;
+      color: #e63946;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #e63946;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('https://via.placeholder.com/1200x800') no-repeat center center/cover;
+      position: relative;
+      margin-top: 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      color: #e63946;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    }
+    .hero-content p {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+    .cta-button {
+      background-color: #e63946;
+      color: #fff;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .cta-button:hover {
+      transform: scale(1.1);
+      background-color: #d32f2f;
+    }
+    .categories {
+      padding: 50px;
+      text-align: center;
+    }
+    .categories h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .category-card {
+      background-color: #333;
+      padding: 20px;
+      border-radius: 15px;
+      transition: transform 0.3s;
+    }
+    .category-card:hover {
+      transform: translateY(-10px);
+    }
+    .category-card h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .promo-section {
+      background-color: #e63946;
+      padding: 40px;
+      text-align: center;
+      margin: 40px 0;
+    }
+    .promo-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .footer {
+      background-color: #2c2c2c;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Food Go</div>
+    <div class="nav-links">
+      <a href="#home">Início</a>
+      <a href="#categories">Categorias</a>
+      <a href="#promo">Promoções</a>
+      <a href="#contact">Contato</a>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Food Go</h1>
+      <p>Rápido, Prático e Fácil</p>
+      <button class="cta-button">Peça Agora</button>
+    </div>
+  </div>
+  <div class="categories" id="categories">
+    <h2>Explore Nossas Categorias</h2>
+    <div class="category-grid">
+      <div class="category-card"><h3>Fast Food</h3></div>
+      <div class="category-card"><h3>Pizzas</h3></div>
+      <div class="category-card"><h3>Sanduíches</h3></div>
+      <div class="category-card"><h3>Almoços</h3></div>
+      <div class="category-card"><h3>Marmitas</h3></div>
+      <div class="category-card"><h3>Hamburgers</h3></div>
+      <div class="category-card"><h3>Cachorro-quente</h3></div>
+      <div class="category-card"><h3>Açaí</h3></div>
+      <div class="category-card"><h3>Massas</h3></div>
+      <div class="category-card"><h3>Sobremesas</h3></div>
+    </div>
+  </div>
+  <div class="promo-section" id="promo">
+    <h2>Promoção Especial</h2>
+    <p>50% de desconto na compra de 1 cachorro quente para usuários premium</p>
+    <button class="cta-button">Aproveite Agora</button>
+  </div>
+  <div class="footer" id="contact">
+    <p>© 2025 Food Go. Todos os direitos reservados.</p>
+  </div>
+</body>
+</html>
