@@ -1,16 +1,39 @@
+import json
+import os
+
 log = {}
-print("FoodGo")
-input("pressione enter para iniciar")
+pedidos_arquivo = "pedidos.json"
+
+
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def carregar_pedidos():
+    if os.path.exists(pedidos_arquivo):
+        with open(pedidos_arquivo, "r") as f:
+            return json.load(f)
+    return {}
+
+
+def salvar_pedidos(pedidos):
+    with open(pedidos_arquivo, "w") as f:
+        json.dump(pedidos, f, indent=4, ensure_ascii=False)
 
 
 def cadastro_login():
     while True:
-        print("\033c")
+        limpar_tela()
         conta = input("\nescolha uma opção\n 1 - cadastrar  2 - logar\n")
 
         if conta == "1":
             while True:
                 nome = input("digite um nome de usuario\n")
+                if nome in log:
+                    print("Nome de usuário já existe, escolha outro.")
+                    input("pressione enter para continuar")
+                    continue
+
                 senha = input("digite sua senha(a senha deve conter ao menos 8 caracteres)\n")
 
                 if len(senha) < 8:
@@ -33,8 +56,8 @@ def cadastro_login():
                     if senha == log[nome]:
                         print("bem vindo")
                         input("pressione enter para continuar")
-                        print("\033c")
-                        menu()
+                        limpar_tela()
+                        menu(nome)
 
                         return
 
@@ -48,17 +71,23 @@ def cadastro_login():
                     input("pressione enter para continuar")
                     continue
         else:
-            print("\033c")
+            limpar_tela()
             print("digite um numero valido")
             input("pressione enter para continuar")
             continue
 
 
-def menu():
-    pedidos = {}
+def menu(usuario):
+    pedidos = carregar_pedidos()
     carrinho = {}
+    endereco = None
+
+    if usuario in pedidos:
+        endereco = pedidos[usuario].get("endereco")
+
     while True:
-        print("\033c")
+        limpar_tela()
+        print(f"Usuário: {usuario}")
         escolha = input("1 - pedir  2 - pedidos  3 - sair\n")
 
         if escolha == "1":
@@ -81,11 +110,35 @@ def menu():
                     input("pressione enter para continuar")
 
                 elif decidir == "3":
+                    if not carrinho:
+                        print("Carrinho vazio! Adicione algum item antes de finalizar.")
+                        input("pressione enter para continuar")
+                        continue
+
+                    if usuario not in pedidos:
+                        pedidos[usuario] = {"itens": {}, "endereco": None}
+
+                    # Atualizar itens do pedido
                     for item in carrinho:
-                        pedidos[item] = pedidos.get(item, 0) + carrinho[item]
+                        pedidos[usuario]["itens"][item] = pedidos[usuario]["itens"].get(item, 0) + carrinho[item]
+
                     carrinho.clear()
-                    print("\033c")
-                    print("pedido finalizado")
+                    limpar_tela()
+                    print("Pedido finalizado!")
+
+                    # Solicitar endereço se ainda não cadastrado ou se o usuário quiser alterar
+                    if not pedidos[usuario]["endereco"]:
+                        print("Por favor, informe seu endereço para entrega:")
+                        endereco = input("Endereço: ")
+                        pedidos[usuario]["endereco"] = endereco
+                    else:
+                        print(f"Endereço atual: {pedidos[usuario]['endereco']}")
+                        mudar = input("Deseja alterar o endereço? (s/n): ").lower()
+                        if mudar == 's':
+                            endereco = input("Novo endereço: ")
+                            pedidos[usuario]["endereco"] = endereco
+
+                    salvar_pedidos(pedidos)
                     input("pressione enter para continuar")
                     break
 
@@ -94,18 +147,19 @@ def menu():
                     break
 
                 else:
-                    print("\033c")
+                    limpar_tela()
                     print("invalido")
                     input("pressione enter para continuar")
 
         elif escolha == "2":
-            print("\033c")
+            limpar_tela()
             print("seu pedido:")
-            if pedidos:
-                for item, valor in pedidos.items():
-                    print(item, valor)
+            if usuario in pedidos and pedidos[usuario]["itens"]:
+                for item, valor in pedidos[usuario]["itens"].items():
+                    print(f"{item}: {valor}")
+                if pedidos[usuario]["endereco"]:
+                    print(f"Endereço de entrega: {pedidos[usuario]['endereco']}")
             else:
-                print("\033c")
                 print("nenhum pedido realizado")
             input("pressione enter para continuar")
 
@@ -117,4 +171,6 @@ def menu():
             input("pressione enter para continuar")
 
 
+print("FoodGo")
+input("pressione enter para iniciar")
 cadastro_login()
