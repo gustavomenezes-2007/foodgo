@@ -35,7 +35,9 @@ def cadastro_login():
                         input("pressione enter para continuar")
                         print("\033c")
                         menu()
-                        return  # sai do login após o menu
+
+                        return
+
                     else:
                         print("senha invalida")
                         input("pressione enter para continuar")
