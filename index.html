@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Go - Delivery</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -14,20 +16,26 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         .header {
             background: #000000;
-            color: #FF8000;
             padding: 15px 20px;
-            text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            font-size: 24px;
-            font-weight: 600;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+        .logo-img {
+            height: 60px;
+            width: 200px;
+            vertical-align: middle;
+        }
+
         .sidebar {
             width: 250px;
             background-color: #000000;
@@ -38,6 +46,7 @@
             left: 0;
             transition: all 0.3s ease;
         }
+
         .sidebar a {
             display: flex;
             align-items: center;
@@ -47,19 +56,23 @@
             font-size: 15px;
             transition: all 0.3s ease;
         }
+
         .sidebar a:hover {
             background-color: #1A1A1A;
             color: #FFAA33;
         }
+
         .sidebar a i {
             margin-right: 10px;
         }
+
         .profile {
             text-align: center;
             padding: 20px 0;
             border-bottom: 1px solid #FF8000;
             background: #0F0F0F;
         }
+
         .profile img {
             width: 100px;
             height: 100px;
@@ -67,14 +80,17 @@
             border: 3px solid #FF8000;
             transition: all 0.3s ease;
         }
+
         .profile img:hover {
             transform: scale(1.1);
         }
+
         .profile h2 {
             margin: 10px 0 0;
             font-size: 18px;
             font-weight: 500;
         }
+
         .content {
             margin-left: 250px;
             padding: 80px 30px 20px;
@@ -82,6 +98,7 @@
             background-color: #000000;
             color: #FF8000;
         }
+
         .banner {
             background: url('https://via.placeholder.com/600x200') no-repeat center/cover;
             height: 200px;
@@ -90,6 +107,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .banner-text {
             position: absolute;
             top: 50%;
@@ -100,6 +118,7 @@
             font-weight: 600;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
         }
+
         .section {
             background-color: #1A1A1A;
             padding: 20px;
@@ -109,13 +128,16 @@
             display: none;
             animation: fadeIn 0.5s ease-in;
         }
+
         .section.active {
             display: block;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         .order-card {
             background-color: #2A2A2A;
             color: #FF8000;
@@ -128,29 +150,35 @@
             flex-direction: column;
             align-items: center;
         }
+
         .order-card:hover {
             background-color: #333333;
             transform: translateY(-5px);
         }
+
         .order-card img {
             width: 80px;
             height: 80px;
             margin-bottom: 10px;
             border-radius: 10px;
         }
+
         .order-card h3 {
             margin: 10px 0;
             font-size: 18px;
             font-weight: 600;
         }
+
         .order-card p {
             margin: 5px 0;
             font-size: 14px;
             color: #FFAA33;
         }
+
         .order-card .buttons {
             margin-top: 10px;
         }
+
         .order-card button {
             background-color: #FF8000;
             border: none;
@@ -162,10 +190,12 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
+
         .order-card button:hover {
             background-color: #CC6600;
             transform: scale(1.05);
         }
+
         .footer {
             background-color: #000000;
             color: #FF8000;
@@ -180,11 +210,18 @@
     </style>
 </head>
 <body>
-    <div class="header">FOOD Go</div>
+    <div class="header">
+        <img src="logo.png" alt="FoodGO Logo" class="logo-img">
+    </div>
+
     <div class="sidebar">
         <div class="profile">
             <img src="imgperfil.png" alt="Profile Picture">
+<<<<<<< Updated upstream
             <h2>Francisco Jurandir</h2>
+=======
+            <h2>Jacinto Leite</h2>
+>>>>>>> Stashed changes
         </div>
         <a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Início</a>
         <a href="#" onclick="showSection('historico')"><i class="fas fa-history"></i> Histórico</a>
@@ -193,6 +230,7 @@
         <a href="#" onclick="showSection('pagamentos')"><i class="fas fa-credit-card"></i> Pagamentos</a>
         <a href="#" onclick="showSection('cupons')"><i class="fas fa-tags"></i> Cupons</a>
     </div>
+
     <div class="content">
         <div id="home" class="section active">
             <div class="banner">
@@ -200,7 +238,7 @@
             </div>
             <h2>Pedidos Recentes</h2>
             <div class="order-card">
-                <img src="https://via.placeholder.com/80" alt="Food Image">
+                <img src="comida.jpeg" alt="Food Image">
                 <h3>Comida</h3>
                 <p>espera estimada: 00:40</p>
                 <div class="buttons">
@@ -209,7 +247,7 @@
                 </div>
             </div>
             <div class="order-card">
-                <img src="https://via.placeholder.com/80" alt="Food Image">
+                <img src="comida.jpeg" alt="Food Image">
                 <h3>Sobremesa</h3>
                 <p>espera estimada: 00:25</p>
                 <div class="buttons">
@@ -218,31 +256,28 @@
                 </div>
             </div>
         </div>
+
         <div id="historico" class="section">
             <h2>Histórico de Pedidos</h2>
             <p>Veja todos os seus pedidos anteriores.</p>
         </div>
+
         <div id="conversas" class="section">
             <h2>Conversas</h2>
             <p>Gerencie suas conversas com os restaurantes.</p>
         </div>
+
         <div id="enderecos" class="section">
             <h2>Endereços</h2>
             <p>Adicione ou edite seus endereços de entrega.</p>
         </div>
+
         <div id="pagamentos" class="section">
             <h2>Pagamentos</h2>
             <p>Gerencie suas formas de pagamento.</p>
         </div>
-        <div id="cupons" class="section">
-            <h2>Cupons</h2>
-            <p>Explore e aplique seus cupons de desconto.</p>
-        </div>
-    </div>
-    <div class="footer">
-        <p>© 2025 Food Go. Todos os direitos reservados.</p>
-    </div>
 
+<<<<<<< Updated upstream
     <script>
         function showSection(sectionId) {
             const sections = document.getElementsByClassName('section');
@@ -255,3 +290,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
+=======
+        <div id="cupons" class="section
+>>>>>>> Stashed changes
